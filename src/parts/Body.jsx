@@ -33,7 +33,7 @@ const Body = () => {
 
   return (
     <div>
-      <h1>Budget: ${amount}</h1>
+      <h1>Budget: ₹ {amount}</h1>
       <select onChange={changeHandler}>
         {categories.map((cat) => (
           <option value={cat} key={cat}>

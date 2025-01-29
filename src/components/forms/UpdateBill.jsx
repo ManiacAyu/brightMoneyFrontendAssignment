@@ -27,7 +27,6 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
       const temp = values.date.split("-").reverse().join("-");
       values.date = temp;
       
-      console.log("Update Bill Submit");
       dispatch(updateBill({ id: billToEdit.id, values:values}));
       setBillToEdit();
       onClose();

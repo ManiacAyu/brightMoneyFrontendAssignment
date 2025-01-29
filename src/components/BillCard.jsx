@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useDispatch } from "react-redux";
 import { deleteBill, updateBill } from "../store/billsSlice";
-import { decrAmount } from "../store/monthlyBudget"
+import { decrAmount } from "../store/monthlyBudget";
 
 const BillCard = ({ bill, onUpdate }) => {
   const dispatch = useDispatch();
@@ -18,14 +18,12 @@ const BillCard = ({ bill, onUpdate }) => {
   const payBillHandler = () => {
     const zx = parseInt(bill.amount);
     if (zx > budget) {
-    
-    }
-    else { 
+    } else {
       dispatch(decrAmount(zx));
       deleteHandler();
     }
   };
-
+  console.log(bill)
   return (
     <div className="relative w-80 bg-white shadow-lg rounded-2xl p-4">
       <div className="absolute top-3 right-3 flex gap-6">
@@ -57,6 +55,14 @@ const BillCard = ({ bill, onUpdate }) => {
         >
           Pay Bill
         </button>
+        {bill.should_be_paid && (
+          <button
+            className="ml-5 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            onClick={payBillHandler}
+          >
+            Should Be Paid
+          </button>
+        )}
       </div>
     </div>
   );

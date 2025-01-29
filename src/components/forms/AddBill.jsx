@@ -23,6 +23,8 @@ const AddBill = ({ isOpen, onClose }) => {
     },
     validationSchema,
     onSubmit: (values) => {
+      const temp = values.date.split("-").reverse().join("-");
+      values.date = temp;
       dispatch(addBill({ id: Date.now(), ...values }));
       onClose();
     },
@@ -36,7 +38,10 @@ const AddBill = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       {" "}
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="bg-white p-6 rounded-lg shadow-lg w-96"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2 className="text-xl font-semibold mb-4">Add New Bill</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-4">
@@ -93,7 +98,10 @@ const AddBill = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex justify-between">
-            <button type="submit" className="p-2 rounded-lg bg-green-600 text-white">
+            <button
+              type="submit"
+              className="p-2 rounded-lg bg-green-600 text-white"
+            >
               Add Bill
             </button>
             <button
