@@ -23,7 +23,7 @@ const billsSlice = createSlice({
         console.log(state[index]);
       }
 
-      console.log("Ayush " + action.payload.amount);
+      console.log(action.payload.values);
     },
   },
 });

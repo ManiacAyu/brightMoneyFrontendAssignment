@@ -33,9 +33,8 @@ const MonthlyBillingChart = () => {
   const chartData = useMemo(() => {
     const monthlyExpenses = Array(12).fill(0);
 
-    // Filter bills for the selected year and sum amounts per month
     bills.forEach(({ amount, date }) => {
-      const [day, month, year] = date.split("-"); // Extract month & year
+      const [day, month, year] = date.split("-"); 
       if (year === selectedYear) {
         monthlyExpenses[parseInt(month) - 1] += parseInt(amount);
       }

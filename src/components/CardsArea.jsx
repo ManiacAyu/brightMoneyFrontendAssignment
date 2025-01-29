@@ -2,12 +2,22 @@ import { useState } from "react";
 import BillCard from "./BillCard";
 import AddBill from "./forms/AddBill";
 import UpdateBill from "./forms/UpdateBill";
+import AddIcon from "@mui/icons-material/Add";
 const CardsArea = ({ bills }) => {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [billToEdit, setBillToEdit] = useState(null);
+
+  const addHandler = () => {
+    setAddModalOpen(true);
+    setBillToEdit(null);
+  };
   return (
     <>
+      <div className="ml-50">
+        <span>Add</span>
+        <AddIcon onClick={addHandler} />
+      </div>
       <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {bills.map((bill) => (
           <BillCard

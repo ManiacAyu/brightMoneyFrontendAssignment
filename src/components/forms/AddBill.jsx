@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addBill } from "../../store/billsSlice";
 
-
 const AddBill = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
 
@@ -32,8 +31,12 @@ const AddBill = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+    <div
+      className="fixed inset-0 flex items-center justify-center justify-center bg-gradient-to-b from-black/50 to-black/100"
+      onClick={onClose}
+    >
+      {" "}
+      <div className="bg-white p-6 rounded-lg shadow-lg w-96" onClick={(e) => e.stopPropagation()}>
         <h2 className="text-xl font-semibold mb-4">Add New Bill</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-4">
@@ -90,13 +93,13 @@ const AddBill = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex justify-between">
-            <button type="submit" className="bg-green-600 text-white">
+            <button type="submit" className="p-2 rounded-lg bg-green-600 text-white">
               Add Bill
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="bg-gray-500 text-white"
+              className="p-2 rounded-lg bg-gray-500 text-white"
             >
               Cancel
             </button>

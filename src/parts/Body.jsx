@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CardsArea from "../components/CardsArea";
 import { useSelector } from "react-redux";
+import AddIcon from "@mui/icons-material/Add";
 
 const Body = () => {
   const bills = useSelector((state) => state.bills);
@@ -14,6 +15,10 @@ const Body = () => {
       return prev;
     }, new Set()),
   ]);
+
+  useEffect(() => {
+    setBillsTodisplay(bills);
+  }, [bills]);
   const changeHandler = (e) => {
     setCategory(e.target.value);
     setBillsTodisplay(
@@ -25,6 +30,7 @@ const Body = () => {
     );
   };
 
+
   return (
     <div>
       <h1>Budget: ${amount}</h1>
@@ -35,6 +41,7 @@ const Body = () => {
           </option>
         ))}
       </select>
+      
       <CardsArea bills={billsTodisplay} />
     </div>
   );
