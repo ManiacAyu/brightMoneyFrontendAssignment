@@ -32,7 +32,7 @@ const Body = () => {
 
 
   return (
-    <div>
+    <div className = "font-sans md:font-serif py-20 min-h-screen bg-gradient-to-b from-[#F9B5D0] to-[#A2D9F3]">
       <h1>Budget: ₹ {amount}</h1>
       <select onChange={changeHandler}>
         {categories.map((cat) => (
