@@ -23,7 +23,11 @@ const AddBill = ({ isOpen, onClose }) => {
     },
     validationSchema,
     onSubmit: (values) => {
-      const temp = values.date.split("-").reverse().join("-");
+      let temp = values.date.split("-").reverse();
+      let x = temp[0];
+      temp[0] = temp[1];
+      temp[1] = x;
+      temp = temp.join("-");
       values.date = temp;
       dispatch(addBill({ id: Date.now(), ...values }));
       onClose();

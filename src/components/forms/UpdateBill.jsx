@@ -24,7 +24,11 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      const temp = values.date.split("-").reverse().join("-");
+      let temp = values.date.split("-").reverse();
+      let x = temp[0];
+      temp[0] = temp[1];
+      temp[1] = x;
+      temp = temp.join("-");
       values.date = temp;
       
       dispatch(updateBill({ id: billToEdit.id, values:values}));
