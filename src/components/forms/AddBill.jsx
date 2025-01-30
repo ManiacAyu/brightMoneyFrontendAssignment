@@ -38,7 +38,7 @@ const AddBill = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center justify-center bg-gradient-to-b from-black/50 to-black/100"
+      className="fixed inset-0 z-50 flex items-center justify-center justify-center bg-gradient-to-b from-black/50 to-black/100"
       onClick={onClose}
     >
       {" "}

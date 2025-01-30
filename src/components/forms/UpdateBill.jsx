@@ -24,14 +24,13 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
+      console.log(values.date);
       let temp = values.date.split("-").reverse();
-      let x = temp[0];
-      temp[0] = temp[1];
-      temp[1] = x;
       temp = temp.join("-");
       values.date = temp;
-      
-      dispatch(updateBill({ id: billToEdit.id, values:values}));
+      console.log(values.date);
+
+      dispatch(updateBill({ id: billToEdit.id, values: values }));
       setBillToEdit();
       onClose();
     },
@@ -41,7 +40,7 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center justify-center bg-gradient-to-b from-black/50 to-black/100"
+      className="fixed inset-0 z-50 flex items-center justify-center justify-center bg-gradient-to-b from-black/50 to-black/100"
       onClick={onClose}
     >
       <div
