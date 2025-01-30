@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import { updateBill } from "../../store/billsSlice";
 
 const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
   const dispatch = useDispatch();
+  const [dateChanged, setDateChanged] = useState(false);
   
   const validationSchema = Yup.object({
     description: Yup.string().required("Description is required"),
@@ -24,12 +25,6 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values.date);
-      let temp = values.date.split("-").reverse();
-      temp = temp.join("-");
-      values.date = temp;
-      console.log(values.date);
-
       dispatch(updateBill({ id: billToEdit.id, values: values }));
       setBillToEdit();
       onClose();
@@ -94,8 +89,9 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
 
           <div className="mb-4">
             <input
-              type="date"
+              type="text"
               name="date"
+              placeholder="date (dd-mm-yyyy)"
               className="w-full p-2 border rounded"
               {...formik.getFieldProps("date")}
             />

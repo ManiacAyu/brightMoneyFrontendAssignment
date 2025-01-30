@@ -34,7 +34,7 @@ const MonthlyBillingChart = () => {
     const monthlyExpenses = Array(12).fill(0);
 
     bills.forEach(({ amount, date }) => {
-      const [day, month, year] = date.split("-");
+      const [month, day, year] = date.split("-");
       if (year === selectedYear) {
         monthlyExpenses[parseInt(month) - 1] += parseInt(amount);
       }

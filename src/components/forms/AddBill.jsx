@@ -23,12 +23,6 @@ const AddBill = ({ isOpen, onClose }) => {
     },
     validationSchema,
     onSubmit: (values) => {
-      let temp = values.date.split("-").reverse();
-      let x = temp[0];
-      temp[0] = temp[1];
-      temp[1] = x;
-      temp = temp.join("-");
-      values.date = temp;
       dispatch(addBill({ id: Date.now(), ...values }));
       onClose();
     },
@@ -91,8 +85,9 @@ const AddBill = ({ isOpen, onClose }) => {
 
           <div className="mb-4">
             <input
-              type="date"
+              type="text"
               name="date"
+              placeholder="date (dd-mm-yyyy)"
               className="w-full p-2 border rounded"
               {...formik.getFieldProps("date")}
             />
