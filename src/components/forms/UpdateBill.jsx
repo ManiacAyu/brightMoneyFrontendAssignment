@@ -6,7 +6,7 @@ import { updateBill } from "../../store/billsSlice";
 
 const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
   const dispatch = useDispatch();
-  // Validation Schema
+  
   const validationSchema = Yup.object({
     description: Yup.string().required("Description is required"),
     category: Yup.string().required("Category is required"),

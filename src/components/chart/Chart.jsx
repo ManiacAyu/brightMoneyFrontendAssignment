@@ -26,10 +26,10 @@ const MonthlyBillingChart = () => {
   const [selectedYear, setSelectedYear] = useState("2020");
   const bills = useSelector((state) => state.bills);
 
-  // Extract unique years from bills
+
   const years = [...new Set(bills.map((bill) => bill.date.split("-")[2]))];
 
-  // Compute monthly expenses for the selected year
+
   const chartData = useMemo(() => {
     const monthlyExpenses = Array(12).fill(0);
 
@@ -59,14 +59,14 @@ const MonthlyBillingChart = () => {
         {
           label: `Expenses in ${selectedYear}`,
           data: monthlyExpenses,
-          borderColor: "rgba(75, 192, 192, 1)", // Teal color
-          backgroundColor: "rgba(75, 192, 192, 0.2)", // Light teal fill
+          borderColor: "rgba(75, 192, 192, 1)", 
+          backgroundColor: "rgba(75, 192, 192, 0.2)", 
           fill: true,
           tension: 0.4,
-          pointBackgroundColor: "rgba(75, 192, 192, 1)", // Teal points
-          pointBorderColor: "#fff", // White point borders
-          pointHoverBackgroundColor: "#fff", // White on hover
-          pointHoverBorderColor: "rgba(75, 192, 192, 1)", // Teal on hover
+          pointBackgroundColor: "rgba(75, 192, 192, 1)", 
+          pointBorderColor: "#fff", 
+          pointHoverBackgroundColor: "#fff", 
+          pointHoverBorderColor: "rgba(75, 192, 192, 1)", 
         },
       ],
     };
@@ -78,7 +78,7 @@ const MonthlyBillingChart = () => {
         Monthly Billing Chart
       </h2>
 
-      {/* Year Selector */}
+   
       <div className="flex justify-center mb-8">
         <div className="relative">
           <select
@@ -92,7 +92,7 @@ const MonthlyBillingChart = () => {
               </option>
             ))}
           </select>
-          {/* Dropdown Arrow */}
+          
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg
               className="w-5 h-5"
@@ -112,7 +112,6 @@ const MonthlyBillingChart = () => {
         </div>
       </div>
 
-      {/* Chart */}
       <div className="flex justify-center bg-white p-6 rounded-lg shadow-md">
         <Line data={chartData} />
       </div>
