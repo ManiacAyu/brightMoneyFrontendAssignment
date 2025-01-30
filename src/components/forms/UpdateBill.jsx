@@ -91,7 +91,7 @@ const UpdateBill = ({ isOpen, onClose, billToEdit, setBillToEdit }) => {
             <input
               type="text"
               name="date"
-              placeholder="date (dd-mm-yyyy)"
+              placeholder="date (mm-dd-yyyy)"
               className="w-full p-2 border rounded"
               {...formik.getFieldProps("date")}
             />
